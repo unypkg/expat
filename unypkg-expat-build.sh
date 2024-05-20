@@ -43,7 +43,11 @@ latest_head="$(git ls-remote --refs --tags --sort="v:refname" $pkggit | grep -E 
 latest_ver="$(echo "$latest_head" | cut --delimiter='/' --fields=3 | sed -e "s|R_||" -e "s|_|.|g")"
 latest_commit_id="$(echo "$latest_head" | cut --fields=1)"
 
-check_for_repo_and_create
+version_details
+
+# Release package no matter what:
+echo "newer" >release-"$pkgname"
+
 git_clone_source_repo
 
 cd "$pkg_git_repo_dir" || exit
@@ -55,7 +59,6 @@ cd expat || exit
 cd /uny/sources || exit
 pkg_git_repo_dir=expat
 
-version_details
 archiving_source
 
 ######################################################################################################################
