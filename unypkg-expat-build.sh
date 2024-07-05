@@ -80,7 +80,7 @@ get_include_paths
 ### Start of individual build script
 
 ./configure --prefix=/uny/pkg/"$pkgname"/"$pkgver" \
-    --disable-static \
+    --enable-static \
     --docdir=/uny/pkg/"$pkgname"/"$pkgver"/share/doc/"$pkgname"
 
 make -j"$(nproc)"
